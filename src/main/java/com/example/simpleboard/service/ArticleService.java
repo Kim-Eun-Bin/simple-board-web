@@ -15,4 +15,8 @@ public class ArticleService {
         Article article = form.toEntity();
         return articleRepository.save(article);
     }
+
+    public Iterable<Article> findAll() {
+        return articleRepository.findAll();
+    }
 }

@@ -1,7 +1,9 @@
 package com.example.simpleboard.controller;
 
 import com.example.simpleboard.dto.ArticleForm;
+import com.example.simpleboard.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/test")
 public class ArticleController {
+    @Autowired
+    private ArticleService articleService;
 
     @GetMapping("/articles")
-    public String index(Model model) {
-//        model.addAttribute("msg", "안녕하세요, 반갑습니다!");
+    public String findAll(Model model) {
+        model.addAttribute("articles", articleService.findAll());
         return "articles/index";
     }
 
