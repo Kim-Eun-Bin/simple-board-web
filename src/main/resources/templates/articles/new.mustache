@@ -1,14 +1,16 @@
 {{>layouts/header}}
-<div class="jumbotron">
-  <h1>Article 등록</h1>
-  <hr>
-  <p>articles/new.mustache</p>
+<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+  <div class="col-md-6 px-0">
+    <h1 class="display-4 fst-italic">Simple Board</h1>
+    <hr />
+    <p class="lead my-3">add new article</p>
+  </div>
 </div>
 <!-- Form 태그,
   기존 속성 method와 action을 삭제!
   왜? JS로 보낼거니까!
 -->
-<form class="container">
+<form class="container" style="margin-left: 20px">
   <div class="form-group">
     <label for="title">제목</label>
     <!-- name="title" 추가, DTO의 필드명과 일치해야 함! -->
@@ -20,7 +22,7 @@
     <textarea name="content" class="form-control" id="article-content" placeholder="내용을 입력하세요" rows="3"></textarea>
   </div>
   <!-- type="button"으로 변경, id값 추가 -->
-  <button type="button" class="btn btn-primary" id="article-create-btn">제출</button>
+  <button type="button" class="btn btn-outline-dark" id="article-create-btn">제출</button>
 </form>
 <Script>
 // article 객체 생성
