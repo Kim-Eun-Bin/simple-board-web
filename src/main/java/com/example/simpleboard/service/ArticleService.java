@@ -19,4 +19,8 @@ public class ArticleService {
     public Iterable<Article> findAll() {
         return articleRepository.findAll();
     }
+
+    public Article findById(Long id) {
+        return articleRepository.findById(id).orElse(null);
+    }
 }
