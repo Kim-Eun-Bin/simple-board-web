@@ -11,7 +11,12 @@ public class ArticleController {
 
     @GetMapping("/articles")
     public String index(Model model) {
-        model.addAttribute("msg", "안녕하세요, 반갑습니다!");
+//        model.addAttribute("msg", "안녕하세요, 반갑습니다!");
         return "articles/index";
+    }
+
+    @GetMapping("/articles/new")
+    public String newArticle() {
+        return "articles/new";
     }
 }
