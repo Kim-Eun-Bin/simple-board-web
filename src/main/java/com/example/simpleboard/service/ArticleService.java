@@ -6,9 +6,6 @@ import com.example.simpleboard.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class ArticleService {
     @Autowired
@@ -35,5 +32,9 @@ public class ArticleService {
         article.setContent(form.getContent());
 
         articleRepository.save(article);
+    }
+
+    public void deleteById(Long id) {
+        articleRepository.deleteById(id);
     }
 }

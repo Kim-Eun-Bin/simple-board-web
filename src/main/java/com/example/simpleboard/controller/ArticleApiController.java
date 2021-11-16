@@ -30,4 +30,9 @@ public class ArticleApiController {
     public void update(@PathVariable Long id, @RequestBody ArticleForm form) {
         articleService.updateArticle(id, form);
     }
+
+    @DeleteMapping("/api/articles/{id}")
+    public void delete(@PathVariable Long id) {
+        articleService.deleteById(id);
+    }
 }
