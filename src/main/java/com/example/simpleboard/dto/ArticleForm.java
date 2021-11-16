@@ -7,8 +7,15 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class ArticleForm {
+    private Long id;
     private String title;
     private String content;
+
+    public ArticleForm(Article entity) {
+        this.id = entity.getId();
+        this.title = entity.getTitle();
+        this.content = entity.getContent();
+    }
 
     public Article toEntity() {
         return Article.builder()

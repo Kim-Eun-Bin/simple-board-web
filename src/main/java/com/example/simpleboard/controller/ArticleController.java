@@ -1,6 +1,7 @@
 package com.example.simpleboard.controller;
 
 import com.example.simpleboard.dto.ArticleForm;
+import com.example.simpleboard.entity.Article;
 import com.example.simpleboard.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,15 @@ public class ArticleController {
         return "articles/index";
     }
 
+    @GetMapping("/init")
+    public void initArticles() {
+        ArticleForm form = new ArticleForm(1L, "title-A", "content-A");
+        ArticleForm form2 = new ArticleForm(2L, "title-B", "content-B");
+
+        articleService.createArticle(form);
+        articleService.createArticle(form2);
+    }
+
     @GetMapping("/articles/new")
     public String newArticle() {
         return "articles/new";
@@ -39,5 +49,12 @@ public class ArticleController {
     public String showArticles(@PathVariable Long id, Model model) {
         model.addAttribute("article", articleService.findById(id));
         return "articles/show";
+    }
+
+    @GetMapping("/articles/edit/{id}")
+    public String updateArticle(@PathVariable Long id, Model model) {
+        Article target = articleService.findById(id);
+        model.addAttribute("article", target);
+        return "articles/edit";
     }
 }

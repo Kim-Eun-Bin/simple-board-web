@@ -19,4 +19,15 @@ public class ArticleApiController {
     public void create(@RequestBody ArticleForm form) { // JSON 데이터를 받아옴!
         articleService.createArticle(form);
     }
+
+    @GetMapping("/api/articles/{id}")
+    public ArticleForm getArticle(@PathVariable Long id) {
+        Article entity = articleService.findById(id);
+        return new ArticleForm(entity);
+    }
+
+    @PutMapping("/api/articles/{id}")
+    public void update(@PathVariable Long id, @RequestBody ArticleForm form) {
+        articleService.updateArticle(id, form);
+    }
 }
