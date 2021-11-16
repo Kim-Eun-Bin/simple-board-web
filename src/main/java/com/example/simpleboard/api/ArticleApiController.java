@@ -1,4 +1,4 @@
-package com.example.simpleboard.controller;
+package com.example.simpleboard.api;
 
 import com.example.simpleboard.dto.ArticleForm;
 import com.example.simpleboard.entity.Article;
