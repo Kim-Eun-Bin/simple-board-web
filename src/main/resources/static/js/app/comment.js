@@ -9,6 +9,17 @@ var comment = {
     createBtn.addEventListener('click', function(){
       _this.create();
     });
+
+    // update btn
+    const updateBtns = document.querySelectorAll('.comment-update-btn');
+
+    // update btn event 등록
+    updateBtns.forEach(function(item) {
+      item.addEventListener('click', function() { // 클릭 이벤트 발생시,
+        var form = this.closest('form'); // 클릭 이벤트가 발생한 버튼에 제일 가까운 폼을 찾고,
+        _this.update(form); // 해당 폼으로, 업데이트 수행한다!
+      });
+    });
   },
   // 댓글 등록
   create: function() {
@@ -17,12 +28,10 @@ var comment = {
       author: document.querySelector('#comment-author').value,
       content: document.querySelector('#comment-content').value,
     };
-    // url에서 article의 id를 추출!
+
     var split = location.pathname.split('/');
     var articleId = split[split.length - 1];
-    // Ajax 통신
-    // - https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-    // - https://t.ly/Vrrz
+
     fetch('/test/api/comments/' + articleId, { // 요청을 보냄
       method: 'POST',
       body: JSON.stringify(data),
@@ -37,6 +46,31 @@ var comment = {
         alert('댓글 등록 실패..!');
       }
     });
+  },
+  update: function(form) {
+    var data = {
+      id: form.querySelector('#comment-id').value,
+      author: form.querySelector('#comment-author').value,
+      content: form.querySelector('#comment-content').value,
+    };
+
+    var split = location.pathname.split('/');
+    var articleId = split[split.length - 1];
+
+    fetch('/test/api/comments/' + data.id, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(function(response) {
+      if(response.ok) {
+        alert('댓글이 수정되었습니다.');
+      } else {
+        alert('댓글 수정에 실패했습니다.');
+      }
+      window.location.reload(true); // page reload
+    })
   }
 };
 // 객체 초기화!

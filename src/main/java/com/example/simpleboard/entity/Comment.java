@@ -30,4 +30,5 @@ public class Comment extends BaseTime {
     public void stickTo(Article article) {
         this.article = article;
     }
+
 }
