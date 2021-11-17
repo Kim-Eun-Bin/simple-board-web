@@ -20,4 +20,9 @@ public class CommentApiController {
     public Long update(@PathVariable Long id, @RequestBody CommentForm form) {
         return commentService.updateComment(id, form);
     }
+
+    @DeleteMapping("/api/comments/{id}")
+    public Long delete(@PathVariable Long id) {
+        return commentService.delete(id);
+    }
 }

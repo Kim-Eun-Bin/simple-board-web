@@ -29,4 +29,9 @@ public class CommentService {
 
         return commentRepository.save(target).getId();
     }
+
+    public Long delete(Long id) {
+        commentRepository.deleteById(id);
+        return id;
+    }
 }
