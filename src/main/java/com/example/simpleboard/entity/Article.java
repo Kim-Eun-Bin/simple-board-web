@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,6 +20,9 @@ public class Article extends BaseTime {
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "article")
+    private List<Comment> comments;
 
     @Builder
     public Article(Long id, String title, String content) {

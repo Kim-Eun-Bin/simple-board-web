@@ -47,7 +47,10 @@ public class ArticleController {
 
     @GetMapping("/articles/{id}")
     public String showArticles(@PathVariable Long id, Model model) {
-        model.addAttribute("article", articleService.findById(id));
+        Article article = articleService.findById(id);
+
+        model.addAttribute("article", article);
+        model.addAttribute("comments", article.getComments());
         return "articles/show";
     }
 
