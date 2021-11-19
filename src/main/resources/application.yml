@@ -1,5 +1,8 @@
 # H2 DB -> web console access permit
 spring:
+  # OAuth
+  profiles:
+    include: oauth
   h2:
     console:
       enabled: true
