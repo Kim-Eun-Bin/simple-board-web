@@ -4,7 +4,6 @@ import com.example.simpleboard.dto.ArticleForm;
 import com.example.simpleboard.entity.Article;
 import com.example.simpleboard.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
