@@ -3,12 +3,16 @@ spring:
   # OAuth
   profiles:
     include: oauth
-  h2:
-    console:
-      enabled: true
   datasource:
-    url: jdbc:h2:mem:testdb
+    ##mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/simple_board?characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: root
+    password: chma0326@
   jpa:
+    database: mysql
     show-sql: true
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate.format_sql: true

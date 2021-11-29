@@ -6,7 +6,6 @@ import com.example.simpleboard.entity.Article;
 import com.example.simpleboard.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,16 +38,6 @@ public class ArticleController {
 
         return "articles/index";
     }
-
-    @GetMapping("/init")
-    public void initArticles() {
-        ArticleForm form = new ArticleForm(1L, "title-A", "content-A");
-        ArticleForm form2 = new ArticleForm(2L, "title-B", "content-B");
-
-        articleService.createArticle(form);
-        articleService.createArticle(form2);
-    }
-
     @GetMapping("/articles/new")
     public String newArticle(Model model) {
         // 세션에서 키가 'user'인 객체를 가져와 이를 캐스팅 (Object -> SessionUser)

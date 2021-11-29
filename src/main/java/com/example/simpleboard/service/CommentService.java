@@ -5,7 +5,6 @@ import com.example.simpleboard.entity.Article;
 import com.example.simpleboard.entity.Comment;
 import com.example.simpleboard.repository.ArticleRepository;
 import com.example.simpleboard.repository.CommentRepository;
-import com.sun.xml.bind.v2.runtime.JaxBeanInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

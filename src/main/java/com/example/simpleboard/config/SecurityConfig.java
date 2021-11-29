@@ -17,8 +17,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 // to use h2-console
                 .csrf().disable()
-                .headers().frameOptions().disable()
-                .and()
                 // URL setting
                 .authorizeRequests()
                 .antMatchers(
@@ -27,8 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/test/init",
                         "/css/**",
                         "/images/**",
-                        "/js/**",
-                        "/h2-console/**"
+                        "/js/**"
                 ).permitAll() // 누구나 접근 허용
                 // 아래의 패턴은
                 .antMatchers("/test/api/**")
